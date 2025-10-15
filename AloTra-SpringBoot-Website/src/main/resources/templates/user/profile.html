@@ -1,173 +1,170 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{user/layout-user.html}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{user/layout-user.html}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+<title>Title</title>
 </head>
 <body>
-<div layout:fragment="content">
-    <div class="custom-modal" id="add-address-modal">
-        <div class="modal-content rounded">
-            <span class="close" id="closeModal">&times;</span>
-            <div class="modal-header mb-1">
-                <h5>Thông tin địa chỉ</h5>
-            </div>
-            <form id="address-form">
-            
+	<div layout:fragment="content">
+		<div class="custom-modal" id="add-address-modal">
+			<div class="modal-content rounded">
+				<span class="close" id="closeModal">&times;</span>
+				<div class="modal-header mb-1">
+					<h5>Thông tin địa chỉ</h5>
+				</div>
+				<form id="address-form">
 
-             
 
-                <div class="bor8 bg0 m-b-12">
-                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="street" id="street"
-                           placeholder="Số nhà, đường, xóm">
-                </div>
-                <button type="button" class="btn btn-primary mt-2 w-100" id="save-address-btn">Lưu</button>
-            </form>
 
-        </div>
-    </div>
 
-    <div class="d-flex flex-column w-100" style="background-color: rgb(249, 249, 249);">
-        <div class="page-wrapper">
-            <div class="d-flex justify-content-center">
-                <div class="page-right">
-                    <h3 class="title">Quản lý tài khoản</h3>
-                    <div>
-                        <!-- Tab items -->
-                        <div class="tab-bills">
-                            <div class="tab-item active">
-                                Chỉnh sửa thông tin
-                            </div>
-                            <div class="tab-item">
-                                Đổi mật khẩu
-                            </div>
-                            <div class="line"></div>
-                        </div>
+					<div class="bor8 bg0 m-b-12">
+						<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+							name="street" id="street" placeholder="Số nhà, đường, xóm">
+					</div>
+					<button type="button" class="btn btn-primary mt-2 w-100"
+						id="save-address-btn">Lưu</button>
+				</form>
 
-                        <!-- Tab content -->
-                        <div class="tab-content">
-                            <div class="tab-pane active">
-                                <form th:action="@{/update-profile}" method="post" id="profile-form">
-                                    <h4 class="subtitle my-3">Thông tin cá nhân</h4>
-                                    <div class="alert alert-success" th:if="${successMessage != null}" th:text="${successMessage}"></div>
-                                    <div class="alert alert-danger" th:if="${errorMessage != null}" th:text="${errorMessage}"></div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="control-label">
-                                                    Họ và tên
-                                                </label>
-                                                <input type="text" class="form-control" name="name" id="name" th:value="${profile.name}">
-                                                <span class="error text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-6">
-                                            <label  class="control-label">
-                                                Email
-                                            </label>
-                                            <input type="text" class="form-control" name="email" th:value="${profile.email}" readonly>
-                                        </div>
-                                        <div class="col-sm-6">
-                                           <div class="form-group">
-                                               <label class="control-label">
-                                                   Số điện thoại
-                                               </label>
-                                               <input type="text" class="form-control" id="phoneNumber" th:value="${profile.phoneNumber}" name="phoneNumber">
-                                               <span class="error text-danger"></span>
-                                           </div>
-                                        </div>
-                                    </div>
-                                    <div class="btn-save-group">
-                                        <button class="btn-save btn-save-profile">Lưu thay đổi</button>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-12">
-                                            <label class="control-label">
-                                                Địa chỉ giao hàng
-                                            </label>
-                                            <div id="address-list">
-                                                <div th:each="address: ${profile.addressShippingList}">
-                                                    <div class="d-flex align-items-center justify-content-between my-1">
-                                                        <span>
-                                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                            <span th:text="${address.address}"></span>
-                                                        </span>
-                                                        <span class="text-danger cursor-pointer delete-address-btn" th:address-id="${address.id}">
-                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="bg2 size-102" id="add-address">Thêm địa chỉ +</button>
-                                        </div>
-                                    </div>
+			</div>
+		</div>
 
-                                </form>
-                            </div>
-                            <div class="tab-pane">
-                                <form id="change-password-form" th:action="@{/change-password}" method="post">
-                                    <h4 class="subtitle my-3">Đổi mật khẩu</h4>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-6">
-                                            <label  class="control-label">
-                                                Mật khẩu hiện tại
-                                            </label>
-                                            <div class="form-group">
-                                                <input type="password"
-                                                       class="form-control" id="currentPassword" name="currentPassword">
-<!--                                                <i class="fa-solid" style="margin: 10px 0 0 -30px; cursor: pointer;"-->
-<!--                                                   [ngClass]="{'fa-eye': currentPasswordVisible, 'fa-eye-slash': !currentPasswordVisible }"-->
-<!--                                                   (click)="togglePasswordVisibility()"></i>-->
-                                                <span class="error text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-6">
-                                            <label class="control-label">
-                                                Mật khẩu mới
-                                            </label>
-<!--                                            <span class="red_require"> *</span>-->
-                                            <div class="form-group">
-                                                <input type="password"
-                                                       class="form-control" id="newPassword" name="newPassword">
-<!--                                                <i class="fa-solid" style="margin: 10px 0 0 -30px; cursor: pointer;"-->
-<!--                                                   [ngClass]="{'fa-eye': newPasswordVisible, 'fa-eye-slash': !newPasswordVisible }"-->
-<!--                                                   (click)="toggleNewPasswordVisibility()"></i>-->
-                                                <span class="error text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-sm-6">
-                                            <label class="control-label">
-                                                Xác nhận mật khẩu mới
-                                            </label>
-                                            <div class="form-group">
-                                                <input type="password"
-                                                       class="form-control" id="confirmPassword" name="confirmPassword">
-<!--                                                <i class="fa-solid" style="margin: 10px 0 0 -30px; cursor: pointer;"-->
-<!--                                                   [ngClass]="{'fa-eye': confirmPasswordVisible, 'fa-eye-slash': !confirmPasswordVisible }"-->
-<!--                                                   (click)="toggleConfirmPasswordVisibility()"></i>-->
-                                                <span class="error text-danger"></span>
+		<div class="d-flex flex-column w-100"
+			style="background-color: rgb(249, 249, 249);">
+			<div class="page-wrapper">
+				<div class="d-flex justify-content-center">
+					<div class="page-right">
+						<h3 class="title">Quản lý tài khoản</h3>
+						<div>
+							<!-- Tab items -->
+							<div class="tab-bills">
+								<div class="tab-item active">Chỉnh sửa thông tin</div>
+								<div class="tab-item">Đổi mật khẩu</div>
+								<div class="line"></div>
+							</div>
 
-                                            </div>
-                                        </div>
-                                        <div class="btn-save-pass-group">
-                                            <button class="btn-save btn-save-pass">Lưu thay đổi</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
+							<!-- Tab content -->
+							<div class="tab-content">
+								<div class="tab-pane active">
+									<form th:action="@{/update-profile}" method="post"
+										id="profile-form">
+										<h4 class="subtitle my-3">Thông tin cá nhân</h4>
+										<div class="alert alert-success"
+											th:if="${successMessage != null}" th:text="${successMessage}"></div>
+										<div class="alert alert-danger"
+											th:if="${errorMessage != null}" th:text="${errorMessage}"></div>
+										<div class="row mt-3">
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label class="control-label"> Họ và tên </label> <input
+														type="text" class="form-control" name="name" id="name"
+														th:value="${profile.name}"> <span
+														class="error text-danger"></span>
+												</div>
+											</div>
+										</div>
+										<div class="row mt-3">
+											<div class="col-sm-6">
+												<label class="control-label"> Email </label> <input
+													type="text" class="form-control" name="email"
+													th:value="${profile.email}" readonly>
+											</div>
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label class="control-label"> Số điện thoại </label> <input
+														type="text" class="form-control" id="phoneNumber"
+														th:value="${profile.phoneNumber}" name="phoneNumber">
+													<span class="error text-danger"></span>
+												</div>
+											</div>
+										</div>
+										<div class="btn-save-group">
+											<button class="btn-save btn-save-profile">Lưu thay
+												đổi</button>
+										</div>
+										<div class="row mt-3">
+											<div class="col-sm-12">
+												<label class="control-label"> Địa chỉ giao hàng </label>
+												<div id="address-list">
+													<div th:each="address: ${profile.addressShippingList}">
+														<div
+															class="d-flex align-items-center justify-content-between my-1">
+															<span> <i class="fa fa-map-marker"
+																aria-hidden="true"></i> <span
+																th:text="${address.address}"></span>
+															</span> <span
+																class="text-danger cursor-pointer delete-address-btn"
+																th:address-id="${address.id}"> <i
+																class="fa fa-trash-o" aria-hidden="true"></i>
+															</span>
+														</div>
+													</div>
+												</div>
+												<button type="button" class="bg2 size-102" id="add-address">Thêm
+													địa chỉ +</button>
+											</div>
+										</div>
+
+									</form>
+								</div>
+								<div class="tab-pane">
+									<form id="change-password-form" th:action="@{/change-password}"
+										method="post">
+										<h4 class="subtitle my-3">Đổi mật khẩu</h4>
+										<div class="row mt-3">
+											<div class="col-sm-6">
+												<label class="control-label"> Mật khẩu hiện tại </label>
+												<div class="form-group">
+													<input type="password" class="form-control"
+														id="currentPassword" name="currentPassword">
+													<!--                                                <i class="fa-solid" style="margin: 10px 0 0 -30px; cursor: pointer;"-->
+													<!--                                                   [ngClass]="{'fa-eye': currentPasswordVisible, 'fa-eye-slash': !currentPasswordVisible }"-->
+													<!--                                                   (click)="togglePasswordVisibility()"></i>-->
+													<span class="error text-danger"></span>
+												</div>
+											</div>
+										</div>
+										<div class="row mt-3">
+											<div class="col-sm-6">
+												<label class="control-label"> Mật khẩu mới </label>
+												<!--                                            <span class="red_require"> *</span>-->
+												<div class="form-group">
+													<input type="password" class="form-control"
+														id="newPassword" name="newPassword">
+													<!--                                                <i class="fa-solid" style="margin: 10px 0 0 -30px; cursor: pointer;"-->
+													<!--                                                   [ngClass]="{'fa-eye': newPasswordVisible, 'fa-eye-slash': !newPasswordVisible }"-->
+													<!--                                                   (click)="toggleNewPasswordVisibility()"></i>-->
+													<span class="error text-danger"></span>
+												</div>
+											</div>
+										</div>
+										<div class="row mt-3">
+											<div class="col-sm-6">
+												<label class="control-label"> Xác nhận mật khẩu mới
+												</label>
+												<div class="form-group">
+													<input type="password" class="form-control"
+														id="confirmPassword" name="confirmPassword">
+													<!--                                                <i class="fa-solid" style="margin: 10px 0 0 -30px; cursor: pointer;"-->
+													<!--                                                   [ngClass]="{'fa-eye': confirmPasswordVisible, 'fa-eye-slash': !confirmPasswordVisible }"-->
+													<!--                                                   (click)="toggleConfirmPasswordVisibility()"></i>-->
+													<span class="error text-danger"></span>
+
+												</div>
+											</div>
+											<div class="btn-save-pass-group">
+												<button class="btn-save btn-save-pass">Lưu thay đổi</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
         $(document).ready(function () {
             Validator({
                 form: '#profile-form',
@@ -387,6 +384,6 @@
 
         })
     </script>
-</div>
+	</div>
 </body>
 </html>

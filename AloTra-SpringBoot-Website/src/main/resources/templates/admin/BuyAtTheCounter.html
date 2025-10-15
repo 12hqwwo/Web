@@ -550,7 +550,7 @@
                 var maxQuantiyAllow=99999999;
                 let tabQuantity = 1;
                 var currentUserRole = /*[[${#authentication.getPrincipal().getAuthorities()}]]*/ [];
-                if(currentUserRole[0].authority == 'ROLE_EMPLOYEE') {
+                if(currentUserRole[0].authority == 'ROLE_VENDOR') {
                     maxQuantiyAllow = 20;
                 }
 

@@ -2,8 +2,8 @@
 Project:  
 Version:  
 Last change:  
-Assigned to:  Le Xuan Bach
-Primary use:  Company
+Assigned to: 
+Primary use: 
 -------------------------------------------------------------------*/
 /*------------------------------------------------------------------
 [LAYOUT]
@@ -54,7 +54,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 @font-face {
   font-family: 'Poppins', sans-serif;
-  src: url('../fonts/Poppins/'Poppins', sans-serif.ttf'); 
+  src: url('../fonts/Poppins/, sans-serif.ttf'); 
 }
 
 @font-face {
@@ -84,11 +84,51 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   font-family: Montserrat-Bold;
   src: url('../fonts/Montserrat/Montserrat-Bold.ttf'); 
 }
+/*-----------------------------------------------*/
+
+@font-face {
+  font-family: 'VIP Malgio';
+  src: url('../fonts/VIP-Malgio/1FTV-VIP-Malgio.ttf'); 
+}
+
+/*-----------------------------------------------*/
+
+@font-face {
+  font-family: 'DFVN Wornout';
+  src: url('../fonts/DFVN-Wornout/DFVN-Wornout.otf');
+}
+
+/*-----------------------------------------------*/
+
+@font-face {
+  font-family: 'Unbounded Variable';
+  src: url('../fonts/unbounded-variable-font/Unbounded-VariableFont_wght.ttf');
+}
+
+/*-----------------------------------------------*/
+
+@font-face {
+  font-family: 'Grotesk Black'; 
+  src: url('../fonts/GROTESK-BLACK/GROTESK-BLACK.TTF'); 
+}
+
+/*-----------------------------------------------*/
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('../fonts/unbounded-variable/Unbounded-VariableFont.ttf');
+}
+
+/*-----------------------------------------------*/
+
+@font-face {
+  font-family: 'Carrington'; 
+  src: url('../fonts/Carrington/MTD Carrington.otf'); 
+}
 
 
 /*//////////////////////////////////////////////////////////////////
 [ RS PLUGIN ]*/
-
 /*------------------------------------------------------------------
 [ Bootstrap ]*/
 .container {max-width: 1380px;}
@@ -1313,8 +1353,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .caption-dots-slick1 {
-  font-family: Poppins-ExtraLight;
-  font-size: 16px;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px;
   line-height: 1.3;
   color: #fff;
   text-align: center;
@@ -1641,7 +1681,7 @@ button.mfp-close {
 
 .swal-button {
   background-color: #717fe0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Unbounded Variable';
   font-size: 16px;
   color: white;
   text-transform: uppercase;
@@ -1662,7 +1702,7 @@ button.mfp-close {
 }
 
 .swal-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Unbounded Variable';
   font-weight: bold;
   color: #333333;
   font-size: 18px;
@@ -2006,7 +2046,7 @@ input.num-product::-webkit-inner-spin-button {
 
 /*---------------------------------------------*/
 .block1-txt:hover {
-  background-color: rgba(103,117,214,0.8);
+background-color: rgba(139, 69, 19, 0.8);
 }
 
 .block1-txt:hover .block1-txt-child2 {
@@ -3736,7 +3776,6 @@ th {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Style the close button */
 .close {
   position: absolute;
   top: 10px;
@@ -3744,4 +3783,85 @@ th {
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* ===================================================================
+    [ CUSTOM FONT CHO BANNER ] */
+
+.banner-text-top {
+  font-family: 'VIP Malgio', sans-serif !important; /* Áp dụng font Malgio */
+}
+
+.banner-text-bottom {
+  font-family: 'DFVN Wornout', sans-serif !important; /* Áp dụng font Wornout */
+}
+
+.font-carrington {
+  font-family: 'Carrington', cursive !important; /* 'cursive' là font dự phòng */
+    font-size: 45px !important;
+}
+
+/* ===================================================================
+    [ CUSTOM FONT CHO Trang about ] */
+
+.font-grotesk-black {
+  font-family: 'Grotesk Black', sans-serif !important;
+}
+
+/* ===================================================================
+    [ HIỆU ỨNG HIỂN THỊ CHỮ KHI RÊ CHUỘT VÀO BANNER ] */
+
+/* 1. Mặc định: Ẩn các nội dung chữ đi */
+.block1-txt .block1-txt-child1,
+.block1-txt .block1-txt-child2 {
+    opacity: 0; /* Ẩn đi bằng cách làm trong suốt */
+    transition: all 0.5s ease; /* Thêm hiệu ứng chuyển động mượt mà trong 0.5 giây */
+}
+
+/* 2. (Tùy chọn) Thêm hiệu ứng trượt nhẹ cho các dòng chữ chính */
+.block1-txt .block1-txt-child1 {
+    transform: translateY(20px); /* Đẩy chữ xuống 20px so với vị trí gốc */
+}
+
+/* 3. Khi rê chuột vào banner (.block1-txt), hiện chữ trở lại */
+.block1-txt:hover .block1-txt-child1,
+.block1-txt:hover .block1-txt-child2 {
+    opacity: 1; /* Làm chữ hiện rõ lại */
+}
+
+/* 4. (Tùy chọn) Di chuyển chữ chính về vị trí ban đầu khi rê chuột */
+.block1-txt:hover .block1-txt-child1 {
+    transform: translateY(0); /* Trả chữ về vị trí gốc */
+}
+
+/* ===================================================================
+    [ LỚP PHỦ GRADIENT CHO BANNER] */
+
+/* 1. Đặt section làm gốc tọa độ */
+.bg-img1 {
+    position: relative; /* <-- Dòng này sẽ sửa lỗi bị tràn */
+}
+
+/* 2. Tạo lớp phủ gradient (giữ nguyên) */
+.bg-img1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(69, 45, 30, 0.8) 0%, rgba(69, 45, 30, 0) 100%);
+}
+
+/* 3. Đảm bảo chữ nằm bên trên lớp phủ (giữ nguyên) */
+.bg-img1 > * {
+    position: relative;
+}
+
+.ltext-105 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 1.1;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* <-- Thêm dòng này */
 }

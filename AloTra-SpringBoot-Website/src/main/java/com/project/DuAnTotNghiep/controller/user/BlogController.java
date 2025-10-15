@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BlogController {
 
-    @GetMapping("getblog")
+    @GetMapping("/getblog")
     public String getBlog(Model model) {
         model.addAttribute("layoutUser", "user/blog");
         return "user/blog";    }
 
 
-    @GetMapping("getblogdetail")
+    @GetMapping("/getblogdetail")
     public String getBlogDetail(Model model) {
         model.addAttribute("layoutUser", "user/blog-detail");
         return "user/blog-detail";
