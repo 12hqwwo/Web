@@ -91,6 +91,7 @@
 					<div class="right-top-bar flex-w h-full">
 						<a href="#" class="flex-c-m trans-04 p-lr-25"> Trợ giúp </a>
 
+<<<<<<< HEAD
 						<div style="position: relative">
 							<a href="#" class="flex-c-m trans-04 p-lr-25 dropdown-toggle"
 								id="accountDropdown"> Tài khoản </a>
@@ -111,6 +112,22 @@
 									xuất</a>
 							</div>
 						</div>
+=======
+                    <div style="position: relative">
+                        <a href="#" class="flex-c-m trans-04 p-lr-25 dropdown-toggle" id="accountDropdown">
+                            Tài khoản
+                        </a>
+                        <div class="dropdown-menu" id="accountDropdownMenu">
+                            <!-- Dropdown content goes here -->
+                            <a th:href="@{/user-login}" th:unless="${#authorization.expression('isAuthenticated()')}">Đăng nhập</a>
+                            <a th:href="@{/register}" th:unless="${#authorization.expression('isAuthenticated()')}">Đăng ký</a>
+                            <a th:href="@{/profile}" th:if="${#authorization.expression('isAuthenticated()')}">Thông tin</a>
+                            <a th:href="@{/admin/thong-ke-doanh-thu}" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_VENDOR')">Trang quản lý</a>
+                            <a th:href="@{/cart-status}" th:if="${#authorization.expression('isAuthenticated()')}">Đơn hàng</a>
+                            <a th:href="@{/user_logout}" th:if="${#authorization.expression('isAuthenticated()')}">Đăng xuất</a>
+                        </div>
+                    </div>
+>>>>>>> 5d26f952a7fde387f0eaf5c4a56b8923c7b026fc
 
 					</div>
 				</div>

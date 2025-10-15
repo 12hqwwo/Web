@@ -204,9 +204,12 @@
 											</div>
 										</div>
 										<span class="remaning-product" style="font-size: 12px"></span>
-										<button
-											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-											Thêm vào giỏ</button>
+											<th:block
+												th:if="${#authorization.expression('isAuthenticated()')}">
+
+												<button
+													class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+													Thêm vào giỏ</button>
 									</div>
 								</div>
 							</div>
