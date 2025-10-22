@@ -1,355 +1,385 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{user/layout-user.html}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{user/layout-user.html}">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+<title>Title</title>
 
 
 </head>
 <body>
-<div layout:fragment="content">
+	<div layout:fragment="content">
 
-    <!-- Product -->
-    <div class="bg0 m-t-23 p-b-140">
-        <div class="container">
-            <div class="flex-w flex-sb-m p-b-52">
-                <div class="flex-w flex-l-m filter-tope-group m-tb-10 filter-gender">
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" th:classappend="${dataFilter.gender == null} ? 'how-active1'" data-filter="">
-                        Tất cả
-                    </button>
+		<!-- Product -->
+		<div class="bg0 m-t-23 p-b-140">
+			<div class="container">
+				<div class="flex-w flex-sb-m p-b-52">
+					<div
+						class="flex-w flex-l-m filter-tope-group m-tb-10 filter-gender">
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+							th:classappend="${dataFilter.gender == null} ? 'how-active1'"
+							data-filter="">Tất cả</button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" th:classappend="${dataFilter.gender == '1'} ? 'how-active1'" data-filter="1">
-                        Trà sữa truyền thống
-                    </button>
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+							th:classappend="${dataFilter.gender == '1'} ? 'how-active1'"
+							data-filter="1">Trà sữa truyền thống</button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" th:classappend="${dataFilter.gender == '2'} ? 'how-active1'" data-filter="2">
-                        Trà sữa trân châu
-                    </button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" th:classappend="${dataFilter.gender == '3'} ? 'how-active1'" data-filter="3">
-                        Nhiều topping
-                    </button>
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+							th:classappend="${dataFilter.gender == '2'} ? 'how-active1'"
+							data-filter="2">Trà sữa trân châu</button>
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+							th:classappend="${dataFilter.gender == '3'} ? 'how-active1'"
+							data-filter="3">Nhiều topping</button>
 
-                </div>
+					</div>
 
-                <div class="flex-w flex-c-m m-tb-10">
-                    <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-                        <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-                        <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                        Lọc
-                    </div>
+					<div class="flex-w flex-c-m m-tb-10">
+						<div
+							class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+							<i
+								class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+							<i
+								class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+							Lọc
+						</div>
 
-                    <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-                        <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-                        <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                        Tìm kiếm
-                    </div>
-                </div>
+						<div
+							class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+							<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+							<i
+								class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+							Tìm kiếm
+						</div>
+					</div>
 
-                <!-- Search product -->
-                <div class="dis-none panel-search w-full p-t-10 p-b-15">
-                    <div class="bor8 dis-flex p-l-15">
-                        <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" id="search-btn">
-                            <i class="zmdi zmdi-search"></i>
-                        </button>
+					<!-- Search product -->
+					<div class="dis-none panel-search w-full p-t-10 p-b-15">
+						<div class="bor8 dis-flex p-l-15">
+							<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04"
+								id="search-btn">
+								<i class="zmdi zmdi-search"></i>
+							</button>
 
-                        <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
-                               placeholder="Tìm kiếm" id="search-product-input">
-                    </div>
-                </div>
+							<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text"
+								name="search-product" placeholder="Tìm kiếm"
+								id="search-product-input">
+						</div>
+					</div>
 
-                <!-- Filter -->
-                <div class="dis-none panel-filter w-full p-t-10">
-                    <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-                        <div class="filter-col1 p-r-15 p-b-27">
-                            <div class="mtext-102 cl2 p-b-15">
-                                Sắp xếp theo
-                            </div>
+					<!-- Filter -->
+					<div class="dis-none panel-filter w-full p-t-10">
+						<div
+							class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+							<div class="filter-col1 p-r-15 p-b-27">
+								<div class="mtext-102 cl2 p-b-15">Sắp xếp theo</div>
 
-                            <ul class="filter-order-buy">
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" th:classappend="${dataFilter.sort == null}? 'filter-link-active'">
-                                        Mặc định
-                                    </a>
-                                </li>
+								<ul class="filter-order-buy">
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04"
+										th:classappend="${dataFilter.sort == null}? 'filter-link-active'">
+											Mặc định </a></li>
 
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" th:classappend="${dataFilter.sort == 'createDate,desc'}? 'filter-link-active'" data-sort="createDate,desc">
-                                        Mới nhất
-                                    </a>
-                                </li>
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04"
+										th:classappend="${dataFilter.sort == 'createDate,desc'}? 'filter-link-active'"
+										data-sort="createDate,desc"> Mới nhất </a></li>
 
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" th:classappend="${dataFilter.sort == 'price,asc'}? 'filter-link-active'" data-sort="price,asc">
-                                        Giá từ thấp đến cao
-                                    </a>
-                                </li>
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04"
+										th:classappend="${dataFilter.sort == 'price,asc'}? 'filter-link-active'"
+										data-sort="price,asc"> Giá từ thấp đến cao </a></li>
 
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" th:classappend="${dataFilter.sort == 'price,desc'}? 'filter-link-active'" data-sort="price,desc">
-                                        Giá từ cao đến thấp
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04"
+										th:classappend="${dataFilter.sort == 'price,desc'}? 'filter-link-active'"
+										data-sort="price,desc"> Giá từ cao đến thấp </a></li>
+								</ul>
+							</div>
 
-                        <div class="filter-col2 p-r-15 p-b-27">
-                            <div class="mtext-102 cl2 p-b-15">
-                                Giá
-                            </div>
+							<div class="filter-col2 p-r-15 p-b-27">
+								<div class="mtext-102 cl2 p-b-15">Giá</div>
 
-                            <ul class="filter-price">
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" th:classappend="${dataFilter.minPrice == null && dataFilter.maxPrice == null} ? 'filter-link-active'">
-                                        Tất cả
-                                    </a>
-                                </li>
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" data-min-price="10000" data-max-price="100000" th:classappend="${dataFilter.minPrice == 10000 && dataFilter.maxPrice == 100000} ? 'filter-link-active'">
-                                        Từ 10.000 đến 100.000
-                                    </a>
-                                </li>
+								<ul class="filter-price">
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04"
+										th:classappend="${dataFilter.minPrice == null && dataFilter.maxPrice == null} ? 'filter-link-active'">
+											Tất cả </a></li>
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04" data-min-price="10000"
+										data-max-price="100000"
+										th:classappend="${dataFilter.minPrice == 10000 && dataFilter.maxPrice == 100000} ? 'filter-link-active'">
+											Từ 10.000 đến 100.000 </a></li>
 
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" data-min-price="100000" data-max-price="300000" th:classappend="${dataFilter.minPrice == 100000 && dataFilter.maxPrice == 300000} ? 'filter-link-active'">
-                                        Từ 100.000 đến 300.000
-                                    </a>
-                                </li>
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04" data-min-price="100000"
+										data-max-price="300000"
+										th:classappend="${dataFilter.minPrice == 100000 && dataFilter.maxPrice == 300000} ? 'filter-link-active'">
+											Từ 100.000 đến 300.000 </a></li>
 
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" data-min-price="300000" data-max-price="500000" th:classappend="${dataFilter.minPrice == 300000 && dataFilter.maxPrice == 500000} ? 'filter-link-active'">
-                                        Từ 300.000 đến 500.000
-                                    </a>
-                                </li>
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04" data-min-price="300000"
+										data-max-price="500000"
+										th:classappend="${dataFilter.minPrice == 300000 && dataFilter.maxPrice == 500000} ? 'filter-link-active'">
+											Từ 300.000 đến 500.000 </a></li>
 
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" data-min-price="500000" data-max-price="1000000" th:classappend="${dataFilter.maxPrice == 1000000} ? 'filter-link-active'">
-                                        Tù 500.000 đến 1.000.000
-                                    </a>
-                                </li>
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04" data-min-price="500000"
+										data-max-price="1000000"
+										th:classappend="${dataFilter.maxPrice == 1000000} ? 'filter-link-active'">
+											Tù 500.000 đến 1.000.000 </a></li>
 
-                                <li class="p-b-6">
-                                    <a class="filter-link stext-106 trans-04" data-min-price="1000000">
-                                        Từ 1.000.000 trở lên
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+									<li class="p-b-6"><a
+										class="filter-link stext-106 trans-04"
+										data-min-price="1000000"> Từ 1.000.000 trở lên </a></li>
+								</ul>
+							</div>
 
-                        <div class="filter-col4 p-b-27">
-                            <div class="mtext-102 cl2 p-b-15">
-                                Loại
-                            </div>
+							<div class="filter-col4 p-b-27">
+								<div class="mtext-102 cl2 p-b-15">Loại</div>
 
-                            <div class="flex-w p-t-4 m-r--5 category-filter">
-                                <th:block th:each="category: ${categories}">
-                                    <a
-                                            class="category-item-filter flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" th:data-category="${category.id}">
-                                        [[${category.name}]]
-                                    </a>
-                                </th:block>
+								<div class="flex-w p-t-4 m-r--5 category-filter">
+									<th:block th:each="category: ${categories}">
+										<a
+											class="category-item-filter flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
+											th:data-category="${category.id}"> [[${category.name}]] </a>
+									</th:block>
 
 
-                            </div>
+								</div>
 
-                        </div>
-                        <div class="filter-col4 p-b-27">
-                            <div id="filter-btn" class="flex-c-m stext-106 text-white cl6 size-104 bg3 pointer hov-btn3 trans-04 m-r-8 m-tb-4 ">LỌC</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+							</div>
+							<div class="filter-col4 p-b-27">
+								<div id="filter-btn"
+									class="flex-c-m stext-106 text-white cl6 size-104 bg3 pointer hov-btn3 trans-04 m-r-8 m-tb-4 ">LỌC</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-            <div class="row isotope-grid">
-                <div class="col-sm-6 col-md-3 col-lg-2 p-b-35 isotope-item women" th:each="product: ${products}">
-                    <!-- Block2 -->
-                    <div class="block2" style="position: relative">
-                        <div class="ribbon" th:if="${product.discounted}">
-                            <span class="ribbon1"><span>Sale</span></span>
-                        </div>
-                        <div class="block2-pic hov-img0" style="height: 250px">
-<!--                            <img th:src="${product.image.get(0).link}" alt="IMG-PRODUCT" style="height: 100%">-->
-                            <img th:src="${product.imageUrl}" alt="IMG-PRODUCT" style="height: 100%; width: 100%">
-                            <a th:href="@{'/product-detail/' + ${product.code}}"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 " th:data-product-id="${product.id}">
-                                Chi tiết
-                            </a>
-                        </div>
+				<div class="row isotope-grid">
+					<div class="col-sm-6 col-md-3 col-lg-2 p-b-35 isotope-item women"
+						th:each="product: ${products}">
+						<!-- Block2 -->
+						<div class="block2" style="position: relative">
+							<div class="ribbon" th:if="${product.discounted}">
+								<span class="ribbon1"><span>Sale</span></span>
+							</div>
+							<div class="block2-pic hov-img0" style="height: 250px">
+								<!--                            <img th:src="${product.image.get(0).link}" alt="IMG-PRODUCT" style="height: 100%">-->
+								<img th:src="${product.imageUrl}" alt="IMG-PRODUCT"
+									style="height: 100%; width: 100%"> <a
+									th:href="@{'/product-detail/' + ${product.code}}"
+									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 "
+									th:data-product-id="${product.id}"> Chi tiết </a>
+							</div>
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a th:href="@{'/product-detail/' + ${product.code}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" th:text="${product.name}">
+							<div class="block2-txt flex-w flex-t p-t-14">
+								<div class="block2-txt-child1 flex-col-l ">
+									<a th:href="@{'/product-detail/' + ${product.code}}"
+										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
+										th:text="${product.name}"> </a> <span class="stext-105 cl3"
+										th:text="${#numbers.formatDecimal(product.priceMin, 0, 'POINT', 0, 'COMMA') + ' VND'}">
 
-                                </a>
+									</span>
+								</div>
 
-                                <span class="stext-105 cl3" th:text="${#numbers.formatDecimal(product.priceMin, 0, 'POINT', 0, 'COMMA') + ' VND'}">
+							</div>
+						</div>
+					</div>
 
-								</span>
-                            </div>
+				</div>
 
-                        </div>
-                    </div>
-                </div>
+				<!-- Load more -->
+				<nav th:if="${products.totalPages > 0}"
+					class="pagination is-centered mt-4" role="navigation"
+					aria-label="pagination">
+					<ul class="pagination-list">
+						<li><a
+							th:if="${products.pageable.pageNumber != 0 && url == null}"
+							th:href="@{/getproduct?page=0}" class="pagination-link"
+							aria-label="First"> <i class="fa fa-angle-double-left"
+								aria-hidden="true"></i>
+						</a> <a th:if="${products.pageable.pageNumber != 0 && url != null}"
+							th:href="@{'/getproduct?page=0' + ${url}}"
+							class="pagination-link" aria-label="First"> <i
+								class="fa fa-angle-double-left" aria-hidden="true"></i>
+						</a> <a th:unless="${products.pageable.pageNumber != 0}"
+							class="pagination-link is-disabled" aria-label="First"> <i
+								class="fa fa-angle-double-left" aria-hidden="true"></i>
+						</a></li>
+						<li><a
+							th:if="${products.pageable.pageNumber > 0 && url!=null}"
+							th:href="@{'/getproduct?page=' + ${products.pageable.pageNumber - 1}}"
+							class="pagination-link" aria-label="Previous"> <i
+								class="fa fa-angle-left" aria-hidden="true"></i>
+						</a> <a th:if="${products.pageable.pageNumber > 0 && url!=null}"
+							th:href="@{'/getproduct?page=' + ${products.pageable.pageNumber - 1}}"
+							class="pagination-link" aria-label="Previous"> <i
+								class="fa fa-angle-left" aria-hidden="true"></i>
+						</a> <a th:unless="${products.pageable.pageNumber > 0}"
+							class="pagination-link is-disabled" aria-label="Previous"> <i
+								class="fa fa-angle-left" aria-hidden="true"></i>
+						</a></li>
 
-            </div>
+						<li
+							th:each="page : ${#numbers.sequence(0, products.totalPages - 1)}">
+							<a th:if="${url == null}"
+							th:href="@{'/getproduct?page=' + ${page}}"
+							th:classappend="${page == products.pageable.pageNumber} ? 'is-current'"
+							class="pagination-link" aria-label="Page [[${page + 1}]]">
+								[[${page + 1}]] </a> <a th:if="${url != null}"
+							th:href="@{'/getproduct?page=' + ${page} + ${url}}"
+							th:classappend="${page == products.pageable.pageNumber} ? 'is-current'"
+							class="pagination-link" aria-label="Page [[${page + 1}]]">
+								[[${page + 1}]] </a>
+						</li>
 
-            <!-- Load more -->
-            <nav th:if="${products.totalPages > 0}" class="pagination is-centered mt-4" role="navigation" aria-label="pagination" >
-                <ul class="pagination-list">
-                    <li>
-                        <a th:if="${products.pageable.pageNumber != 0 && url == null}" th:href="@{/getproduct?page=0}" class="pagination-link" aria-label="First">
-                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                        </a>
-                        <a th:if="${products.pageable.pageNumber != 0 && url != null}" th:href="@{'/getproduct?page=0' + ${url}}" class="pagination-link" aria-label="First">
-                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                        </a>
-                        <a th:unless="${products.pageable.pageNumber != 0}" class="pagination-link is-disabled" aria-label="First">
-                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a th:if="${products.pageable.pageNumber > 0 && url!=null}" th:href="@{'/getproduct?page=' + ${products.pageable.pageNumber - 1}}" class="pagination-link" aria-label="Previous">
-                            <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        </a>
-                        <a th:if="${products.pageable.pageNumber > 0 && url!=null}" th:href="@{'/getproduct?page=' + ${products.pageable.pageNumber - 1}}" class="pagination-link" aria-label="Previous">
-                            <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        </a>
-                        <a th:unless="${products.pageable.pageNumber > 0}" class="pagination-link is-disabled" aria-label="Previous">
-                            <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        </a>
-                    </li>
+						<li><a
+							th:if="${products.pageable.pageNumber < products.totalPages - 1 && url == null}"
+							th:href="@{'/getproduct?page=' + ${products.pageable.pageNumber + 1}}"
+							class="pagination-link" aria-label="Next"> <i
+								class="fa fa-angle-right" aria-hidden="true"></i>
+						</a> <a
+							th:if="${products.pageable.pageNumber < products.totalPages - 1 && url !=null }"
+							th:href="@{'/getproduct?page=' + ${products.pageable.pageNumber + 1} + ${url} }"
+							class="pagination-link" aria-label="Next"> <i
+								class="fa fa-angle-right" aria-hidden="true"></i>
+						</a> <a
+							th:unless="${products.pageable.pageNumber < products.totalPages - 1}"
+							class="pagination-link is-disabled" aria-label="Next"> <i
+								class="fa fa-angle-right" aria-hidden="true"></i>
+						</a></li>
 
-                    <li th:each="page : ${#numbers.sequence(0, products.totalPages - 1)}">
-                        <a th:if="${url == null}" th:href="@{'/getproduct?page=' + ${page}}" th:classappend="${page == products.pageable.pageNumber} ? 'is-current'" class="pagination-link" aria-label="Page [[${page + 1}]]">
-                            [[${page + 1}]]
-                        </a>
-                        <a th:if="${url != null}" th:href="@{'/getproduct?page=' + ${page} + ${url}}" th:classappend="${page == products.pageable.pageNumber} ? 'is-current'" class="pagination-link" aria-label="Page [[${page + 1}]]">
-                            [[${page + 1}]]
-                        </a>
-                    </li>
+						<li><a
+							th:if="${products.pageable.pageNumber < products.totalPages - 1 && url == null}"
+							th:href="@{'/cart-status?page=' + ${products.totalPages - 1}}"
+							class="pagination-link" aria-label="Last"> <i
+								class="fa fa-angle-double-right" aria-hidden="true"></i>
+						</a> <a
+							th:if="${products.pageable.pageNumber < products.totalPages - 1 && url != null}"
+							th:href="@{'/cart-status?page=' + ${products.totalPages - 1} + ${url} }"
+							class="pagination-link" aria-label="Last"> <i
+								class="fa fa-angle-double-right" aria-hidden="true"></i>
+						</a> <a
+							th:unless="${products.pageable.pageNumber < products.totalPages - 1}"
+							class="pagination-link is-disabled" aria-label="Last"> <i
+								class="fa fa-angle-double-right" aria-hidden="true"></i>
+						</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
 
-                    <li>
-                        <a th:if="${products.pageable.pageNumber < products.totalPages - 1 && url == null}" th:href="@{'/getproduct?page=' + ${products.pageable.pageNumber + 1}}" class="pagination-link" aria-label="Next">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </a>
-                        <a th:if="${products.pageable.pageNumber < products.totalPages - 1 && url !=null }" th:href="@{'/getproduct?page=' + ${products.pageable.pageNumber + 1} + ${url} }" class="pagination-link" aria-label="Next">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </a>
-
-                        <a th:unless="${products.pageable.pageNumber < products.totalPages - 1}" class="pagination-link is-disabled" aria-label="Next">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a th:if="${products.pageable.pageNumber < products.totalPages - 1 && url == null}" th:href="@{'/cart-status?page=' + ${products.totalPages - 1}}" class="pagination-link" aria-label="Last">
-                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                        </a>
-                        <a th:if="${products.pageable.pageNumber < products.totalPages - 1 && url != null}" th:href="@{'/cart-status?page=' + ${products.totalPages - 1} + ${url} }" class="pagination-link" aria-label="Last">
-                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                        </a>
-                        <a th:unless="${products.pageable.pageNumber < products.totalPages - 1}" class="pagination-link is-disabled" aria-label="Last">
-                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-
-    <!-- Back to top -->
-    <div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
-    </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" th:inline="javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10" th:inline="javascript"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script th:inline="javascript">
-        var urlCurr = /*[[${url}]]*/ 'abc';
-        $('.category-item-filter').on('click', function () {
-            if($(this).hasClass('category-item-filter-active')) {
-                $(this).removeClass('category-item-filter-active')
-            }else {
-                $(this).addClass('category-item-filter-active')
-
-            }
-        })
-
-        $('.filter-order-buy').find('.filter-link').on('click', function (e) {
-            $('.filter-order-buy').find('.filter-link').removeClass('filter-link-active')
-            $(this).addClass('filter-link-active')
-        })
-
-        $('.filter-price').find('.filter-link').on('click', function (e) {
-            $('.filter-price').find('.filter-link').removeClass('filter-link-active')
-            $(this).addClass('filter-link-active')
-        })
+		<!-- Back to top -->
+		<div class="btn-back-to-top" id="myBtn">
+			<span class="symbol-btn-back-to-top"> <i
+				class="zmdi zmdi-chevron-up"></i>
+			</span>
+		</div>
 
 
-        // Hiển thị giá trị mặc định
-        $("#min-price").val("$" + $("#price-slider").slider("values", 0));
-        $("#max-price").val("$" + $("#price-slider").slider("values", 1));
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+			th:inline="javascript"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"
+			th:inline="javascript"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script th:inline="javascript">
+			var urlCurr = /*[[${url}]]*/'abc';
+			$('.category-item-filter').on('click', function() {
+				if ($(this).hasClass('category-item-filter-active')) {
+					$(this).removeClass('category-item-filter-active')
+				} else {
+					$(this).addClass('category-item-filter-active')
 
-        var url = '?page=0'
-        $('#filter-btn').on('click', function () {
-            var orderBy = $(".filter-order-buy").find('.filter-link-active').attr('data-sort')
-            var dataMinPrice = $(".filter-price").find('.filter-link-active').attr('data-min-price')
-            var dataMaxPrice = $(".filter-price").find('.filter-link-active').attr('data-max-price')
+				}
+			})
 
-            var dataCategoryEl = $('.category-item-filter-active')
-            var categoryIds = []
-            if(dataCategoryEl.length > 0) {
-                dataCategoryEl.each(function() {
-                    var dataCate = $(this); // Sử dụng $(this) thay vì $(item)
-                    var id = dataCate.attr('data-category');
-                    categoryIds.push(id);
-                });
-            }
-            if(orderBy) {
-                url += '&sort=' + orderBy
-            }
-            if(dataMinPrice) {
-                url += '&minPrice=' + dataMinPrice
-            }
-            if(dataMaxPrice) {
-                url += '&maxPrice=' + dataMaxPrice
-            }
+			$('.filter-order-buy').find('.filter-link').on(
+					'click',
+					function(e) {
+						$('.filter-order-buy').find('.filter-link')
+								.removeClass('filter-link-active')
+						$(this).addClass('filter-link-active')
+					})
 
-            if(categoryIds.length > 1) {
-                url += '&categoryId=' + categoryIds.join(',')
-            }
+			$('.filter-price').find('.filter-link').on(
+					'click',
+					function(e) {
+						$('.filter-price').find('.filter-link').removeClass(
+								'filter-link-active')
+						$(this).addClass('filter-link-active')
+					})
 
-            if(categoryIds.length == 1) {
-                url += '&categoryId=' + categoryIds[0]
-            }
+			// Hiển thị giá trị mặc định
+			$("#min-price").val("$" + $("#price-slider").slider("values", 0));
+			$("#max-price").val("$" + $("#price-slider").slider("values", 1));
 
-            window.location.href = url
-        })
-        $('#search-btn').on('click', function () {
-            if($("#search-product-input").val()) {
-                url += '&keyword=' + $("#search-product-input").val()
-                window.location.href = url
-            }
-        })
+			var url = '?page=0'
+			$('#filter-btn').on(
+					'click',
+					function() {
+						var orderBy = $(".filter-order-buy").find(
+								'.filter-link-active').attr('data-sort')
+						var dataMinPrice = $(".filter-price").find(
+								'.filter-link-active').attr('data-min-price')
+						var dataMaxPrice = $(".filter-price").find(
+								'.filter-link-active').attr('data-max-price')
 
-        $('.filter-gender').on('click', function () {
-            let newURL = urlCurr.replace(/&gender=[^&]/, '');
+						var dataCategoryEl = $('.category-item-filter-active')
+						var categoryIds = []
+						if (dataCategoryEl.length > 0) {
+							dataCategoryEl.each(function() {
+								var dataCate = $(this); // Sử dụng $(this) thay vì $(item)
+								var id = dataCate.attr('data-category');
+								categoryIds.push(id);
+							});
+						}
+						if (orderBy) {
+							url += '&sort=' + orderBy
+						}
+						if (dataMinPrice) {
+							url += '&minPrice=' + dataMinPrice
+						}
+						if (dataMaxPrice) {
+							url += '&maxPrice=' + dataMaxPrice
+						}
 
-            var dataGenderEl = $(".filter-gender").find('button.how-active1').attr('data-filter')
-            if(dataGenderEl) {
-                newURL += '&gender=' + dataGenderEl
-            }
-            window.location.href = '?page=0' + newURL
-        })
-    </script>
+						if (categoryIds.length > 1) {
+							url += '&categoryId=' + categoryIds.join(',')
+						}
+
+						if (categoryIds.length == 1) {
+							url += '&categoryId=' + categoryIds[0]
+						}
+
+						window.location.href = url
+					})
+			$('#search-btn').on('click', function() {
+				if ($("#search-product-input").val()) {
+					url += '&keyword=' + $("#search-product-input").val()
+					window.location.href = url
+				}
+			})
+
+			$('.filter-gender').on(
+					'click',
+					function() {
+						let newURL = urlCurr.replace(/&gender=[^&]/, '');
+
+						var dataGenderEl = $(".filter-gender").find(
+								'button.how-active1').attr('data-filter')
+						if (dataGenderEl) {
+							newURL += '&gender=' + dataGenderEl
+						}
+						window.location.href = '?page=0' + newURL
+					})
+		</script>
 
 
-</div>
+	</div>
 
 </body>
 </html>

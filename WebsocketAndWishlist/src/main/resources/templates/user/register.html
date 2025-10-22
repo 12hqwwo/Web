@@ -1,102 +1,127 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{user/layout-user.html}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{user/layout-user.html}">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+<meta charset="UTF-8">
+<title>Đăng ký tài khoản</title>
 
 </head>
 <body>
 
-<div layout:fragment="content">
+	<div layout:fragment="content">
 
-  <!-- Title page -->
-  <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bn1.jpg');">
-    <h2 class="ltext-105 cl0 txt-center">
-      Đăng ký
-    </h2>
-  </section>
+		<section class="bg-img1 txt-center p-lr-15 p-tb-92"
+			style="background-image: url('images/bn1.jpg');">
+			<h2 class="ltext-105 cl0 txt-center">Đăng ký</h2>
+		</section>
 
-  <!-- Content page -->
-  <section class="bg0 p-b-60">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-4">
-                                      <div th:if="${errorMessage}" class="alert alert-danger">
-                                          <p th:text="${errorMessage}"></p>
-                                      </div>
-          <form class="mt-5 px-4 pt-4 pb-6 shadow-sm border" th:action="@{/register-save}" method="post" id="login-form">
-            <div class="form-group">
-              <label for="name">Họ tên:</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Họ và tên">
-              <span class="error text-danger text-sm"></span>
-            </div>
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="text" class="form-control" id="email" name="email" placeholder="Địa chỉ email">
-              <span class="error text-danger text-sm"></span>
-            </div>
-            <div class="form-group">
-              <label for="phoneNumber">Số điện thoại:</label>
-              <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Số điện thoại">
-              <span class="error text-danger text-sm"></span>
-            </div>
-            <div class="form-group">
-              <label for="password">Mật khẩu:</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
-              <span class="error text-danger text-sm"></span>
-            </div>
+		<!-- Content page -->
+		<section class="bg0 p-b-60">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-4">
+						<div th:if="${errorMessage}" class="alert alert-danger">
+							<p th:text="${errorMessage}"></p>
+						</div>
+						<form class="mt-5 px-4 pt-4 pb-6 shadow-sm border"
+							th:action="@{/register-save}" method="post" id="login-form">
+							<div class="form-group">
+								<label for="name">Họ tên:</label> <input type="text"
+									class="form-control" id="name" name="name"
+									placeholder="Họ và tên"> <span
+									class="error text-danger text-sm"></span>
+							</div>
+							<div class="form-group">
+								<label for="email">Email:</label> <input type="text"
+									class="form-control" id="email" name="email"
+									placeholder="Địa chỉ email"> <span
+									class="error text-danger text-sm"></span>
+							</div>
+							<div class="form-group">
+								<label for="phoneNumber">Số điện thoại:</label> <input
+									type="text" class="form-control" id="phoneNumber"
+									name="phoneNumber" placeholder="Số điện thoại"> <span
+									class="error text-danger text-sm"></span>
+							</div>
+							<div class="form-group">
+								<label for="password">Mật khẩu:</label> <input type="password"
+									class="form-control" id="password" name="password"
+									placeholder="Mật khẩu"> <span
+									class="error text-danger text-sm"></span>
+							</div>
+							<div class="form-group">
+								<label for="confirmPassword">Xác nhận mật khẩu:</label> <input
+									type="password" class="form-control" id="confirmPassword"
+									name="confirmPassword" placeholder="Nhập lại mật khẩu">
+								<span class="error text-danger text-sm"></span>
+							</div>
+							<div class="form-check ml-5">
+							    <input type="checkbox" class="form-check-input" id="showPassword">
+							    <label class="" for="showPassword">Hiện mật khẩu</label>
+							</div>
+							<button type="submit" class="btn btn-primary w-100">ĐĂNG
+								KÝ</button>
+						</form>
 
-            <div class="form-group">
-              <label for="confirmPassword">Mật khẩu:</label>
-              <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Nhập lại khẩu">
-              <span class="error text-danger text-sm"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">ĐĂNG KÝ</button>
-          </form>
-          <div class="signup-link mt-2">
-            <p>Bạn đã có tài khoản? <a th:href="@{/user-login}">Đăng nhập ngay!</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Back to top -->
-  <div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
-  </div>
+						<div class="signup-link mt-2">
+							<p>
+								Bạn đã có tài khoản? <a th:href="@{/user-login}">Đăng nhập
+									ngay!</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Back to top -->
+		<div class="btn-back-to-top" id="myBtn">
+			<span class="symbol-btn-back-to-top"> <i
+				class="zmdi zmdi-chevron-up"></i>
+			</span>
+		</div>
 
 
-  <script>
-    $(document).ready(function () {
-      Validator({
-        form: '#login-form',
-        formGroupSelector: '.form-group',
-        errorSelector: '.error',
-        rules: [
-          Validator.isRequired('#name', 'Vui lòng nhập họ tên của ban'),
-          Validator.isRequired('#email', 'Vui lòng nhập email'),
-          Validator.isRequired('#password', 'Vui lòng nhập mật khẩu'),
-          Validator.isRequired('#phoneNumber', 'Vui lòng nhập mật khẩu'),
-          Validator.isConfirmed('#confirmPassword', () =>  {
-            return document.querySelector('#login-form #password').value;
-          }, 'Mật khẩu nhập lại không chính xác'),
-          Validator.maxLength('#email', 100),
-          Validator.isEmail('#email'),
-          Validator.minLength('#name', 2),
-          Validator.maxLength('#name', 50),
-          Validator.minLength('#password', 6),
-          Validator.maxLength('#password', 50),
-          Validator.maxLength('#phoneNumber', 12),
-          Validator.minLength('#phoneNumber', 10)
-        ]
-      });
-    })
-  </script>
-</div>
+		<script>
+  $(document).ready(function () {
+
+    Validator({
+      form: '#login-form',
+      formGroupSelector: '.form-group',
+      errorSelector: '.error',
+      rules: [
+        Validator.isRequired('#name', 'Vui lòng nhập họ tên của bạn'),
+        Validator.isRequired('#email', 'Vui lòng nhập email'),
+        Validator.isRequired('#password', 'Vui lòng nhập mật khẩu'),
+        Validator.isRequired('#phoneNumber', 'Vui lòng nhập số điện thoại'),  // Sửa lỗi typo từ 'mật khẩu' thành 'số điện thoại'
+        Validator.isConfirmed('#confirmPassword', () => {
+          return document.querySelector('#login-form #password').value;
+        }, 'Mật khẩu nhập lại không chính xác'),
+        Validator.maxLength('#email', 100),
+        Validator.isEmail('#email'),
+        Validator.minLength('#name', 2),
+        Validator.maxLength('#name', 50),
+        Validator.minLength('#password', 6),
+        Validator.maxLength('#password', 50),
+        Validator.maxLength('#phoneNumber', 12),
+        Validator.minLength('#phoneNumber', 10)
+      ]
+    });
+
+
+    $('#showPassword').change(function() {
+      if ($(this).is(':checked')) {
+        $('#password').attr('type', 'text');
+        $('#confirmPassword').attr('type', 'text');
+      } else {
+        $('#password').attr('type', 'password');
+        $('#confirmPassword').attr('type', 'password');
+      }
+    });
+  });
+</script>
+
+	</div>
 
 
 </body>

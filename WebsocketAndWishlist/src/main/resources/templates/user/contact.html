@@ -1,125 +1,130 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{user/layout-user.html}">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Liên hệ</title>
-</head>
+    <meta charset="UTF-8">
+    <title>Liên hệ</title>
+  <!--===============================================================================================-->
 
+</head>
 <body>
 
-<div layout:fragment="content">
+  <div layout:fragment="content">
 
-  <!-- Title page -->
-  <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bn1.jpg');">
-    <h2 class="ltext-105 cl0 txt-center">Liên hệ</h2>
-  </section>
+    <!-- Title page -->
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bn1.jpg');">
+      <h2 class="ltext-105 cl0 txt-center">
+        Liên hệ
+      </h2>
+    </section>
 
-  <!-- Content page -->
-  <section class="bg0 p-t-104 p-b-116">
-    <div class="container">
-      <div class="flex-w flex-tr">
 
-        <!-- Form liên hệ -->
-        <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+    <!-- Content page -->
+    <section class="bg0 p-t-104 p-b-116">
+      <div class="container">
+        <div class="flex-w flex-tr">
+          <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+            <form>
+              <h4 class="mtext-105 cl2 txt-center p-b-30 font-grotesk-black">
+                Gửi đề xuất cho AloTra
+              </h4>
 
-          <!-- ✅ Thông báo kết quả -->
-          <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
-          <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+              <div class="bor8 m-b-20 how-pos4-parent">
+                <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Địa chỉ email của bạn">
+                <img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="ICON">
+              </div>
 
-          <!-- ✅ Form gửi -->
-          <form th:action="@{/getcontact}" method="post">
-            <h4 class="mtext-105 cl2 txt-center p-b-30">
-              Gửi đề xuất cho cửa hàng
-            </h4>
+              <div class="bor8 m-b-30">
+                <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="Chúng tôi có thể giúp gì cho bạn?"></textarea>
+              </div>
 
-            <div class="bor8 m-b-20 how-pos4-parent">
-              <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
-                     type="email"
-                     name="email"
-                     placeholder="Địa chỉ email của bạn"
-                     required>
-              <img class="how-pos4 pointer-none" src="images/icons/icon-email.png" alt="ICON">
-            </div>
-
-            <div class="bor8 m-b-30">
-              <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25"
-                        name="msg"
-                        placeholder="Chúng tôi giúp gì cho bạn?"
-                        required></textarea>
-            </div>
-
-            <button type="submit"
-                    class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-              Gửi
-            </button>
-          </form>
-        </div>
-
-        <!-- Thông tin liên hệ -->
-        <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
-          <div class="flex-w w-full p-b-42">
-            <span class="fs-18 cl5 txt-center size-211">
-              <span class="lnr lnr-map-marker"></span>
-            </span>
-            <div class="size-212 p-t-2">
-              <span class="mtext-110 cl2">Địa chỉ</span>
-              <p class="stext-115 cl6 size-213 p-t-18">Số 1 Võ Văn Ngân</p>
-            </div>
+              <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                Gửi
+              </button>
+            </form>
           </div>
 
-          <div class="flex-w w-full p-b-42">
-            <span class="fs-18 cl5 txt-center size-211">
-              <span class="lnr lnr-phone-handset"></span>
-            </span>
-            <div class="size-212 p-t-2">
-              <span class="mtext-110 cl2">Liên hệ</span>
-              <p class="stext-115 cl1 size-213 p-t-18">+84 899074947</p>
-            </div>
-          </div>
+          <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+            <div class="flex-w w-full p-b-42">
+						<span class="fs-18 cl5 txt-center size-211">
+							<span class="lnr lnr-map-marker"></span>
+						</span>
 
-          <div class="flex-w w-full">
-            <span class="fs-18 cl5 txt-center size-211">
-              <span class="lnr lnr-envelope"></span>
-            </span>
-            <div class="size-212 p-t-2">
-              <span class="mtext-110 cl2">Sale Support</span>
-              <p class="stext-115 cl1 size-213 p-t-18">duyc080807@gmail.com</p>
+              <div class="size-212 p-t-2">
+							<span class="mtext-110 cl2">
+								Địa chỉ
+							</span>
+
+                <p class="stext-115 cl6 size-213 p-t-18">
+                     1 Võ Văn Ngân, Phường Thủ Đức, Thành phố Hồ Chí Minh.              </p>
+              </div>
+            </div>
+
+            <div class="flex-w w-full p-b-42">
+						<span class="fs-18 cl5 txt-center size-211">
+							<span class="lnr lnr-phone-handset"></span>
+						</span>
+
+              <div class="size-212 p-t-2">
+							<span class="mtext-110 cl2">
+								Liên hệ
+							</span>
+
+                <p class="stext-115 cl1 size-213 p-t-18">
+                  +84 868 615 703
+                </p>
+              </div>
+            </div>
+
+            <div class="flex-w w-full">
+						<span class="fs-18 cl5 txt-center size-211">
+							<span class="lnr lnr-envelope"></span>
+						</span>
+
+              <div class="size-212 p-t-2">
+							<span class="mtext-110 cl2">
+								Sale Support
+							</span>
+
+                <p class="stext-115 cl1 size-213 p-t-18">
+                  hoahuongduong05124@gmail.com
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </section>
+
+
+    <!-- Map -->
+    <div class="map">
+      <div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
     </div>
-  </section>
 
-  <!-- Map -->
-  <div class="map">
-    <div class="size-303" id="google_map"
-         data-map-x="40.691446" data-map-y="-73.886787"
-         data-pin="images/icons/pin.png" data-scrollwhell="0"
-         data-draggable="1" data-zoom="11"></div>
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+    </div>
+
   </div>
 
-  <!-- Back to top -->
-  <div class="btn-back-to-top" id="myBtn">
-    <span class="symbol-btn-back-to-top">
-      <i class="zmdi zmdi-chevron-up"></i>
-    </span>
-  </div>
 
-</div>
-
-<!-- JS -->
+<!--===============================================================================================-->
 <script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!--===============================================================================================-->
 <script th:src="@{/vendor/animsition/js/animsition.min.js}"></script>
+<!--===============================================================================================-->
 <script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
 <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
 <script th:src="@{/vendor/select2/select2.min.js}"></script>
 <script th:inline="javascript">
-  $(document).ready(function () {
-    $(".js-select2").each(function () {
+  $(document).ready(function() {
+    $(".js-select2").each(function() {
       $(this).select2({
         minimumResultsForSearch: 20,
         dropdownParent: $(this).next('.dropDownSelect2')
@@ -127,11 +132,13 @@
     });
   });
 </script>
+<!--===============================================================================================-->
 <script th:src="@{/vendor/MagnificPopup/jquery.magnific-popup.min.js}"></script>
+<!--===============================================================================================-->
 <script th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
 <script th:inline="javascript">
-  $(document).ready(function () {
-    $('.js-pscroll').each(function () {
+  $(document).ready(function() {
+    $('.js-pscroll').each(function() {
       $(this).css('position', 'relative');
       $(this).css('overflow', 'hidden');
       var ps = new PerfectScrollbar(this, {
@@ -139,14 +146,17 @@
         scrollingThreshold: 1000,
         wheelPropagation: false,
       });
-      $(window).on('resize', function () {
+
+      $(window).on('resize', function() {
         ps.update();
       });
     });
   });
 </script>
+<!--===============================================================================================-->
 <script th:src="'https://maps.googleapis.com/maps/api/js?key=' + ${googleApiKey}" th:attr="defer='defer'"></script>
 <script th:src="@{/js/map-custom.js}"></script>
+<!--===============================================================================================-->
 <script th:src="@{/js/main.js}"></script>
 
 </body>

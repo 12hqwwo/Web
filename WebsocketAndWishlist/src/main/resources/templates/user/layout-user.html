@@ -60,9 +60,8 @@
 <script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
 <script>
         $(document).ready(function () {
-            /*<![CDATA[*/
-            var isUserLoggedIn = [[${#authorization.expression('isAuthenticated()')}]];
-            /*]]>*/
+        	// [[${#authorization.expression('isAuthenticated()')}]]
+            var isUserLoggedIn = false;
             if(isUserLoggedIn) {
                 $.ajax({
                     type: 'GET',
@@ -117,13 +116,9 @@
 				</div>
 			</div>
 
-
-
-
 			<div class="wrap-menu-desktop how-shadow1">
 				<nav class="limiter-menu-desktop container">
 
-					<!-- Logo desktop -->
 					<a href="/" class="logo"> <img src="/images/logots.png"
 						alt="IMG-LOGO">
 					</a>
@@ -150,21 +145,20 @@
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
+						<!--                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">-->
+						<!--                        <i class="zmdi zmdi-search"></i>-->
+						<!--                    </div>-->
 
-						<!-- ❤️ Wishlist -->
-						<a href="/wishlist"
-							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-							id="wishlist-icon" data-notify="0" title="Yêu thích"> <i
-							class="zmdi zmdi-favorite-outline"></i>
-						</a>
-
-						<!-- 🛒 Giỏ hàng -->
 						<div
 							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
 							data-notify="0">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
+						<!--                    <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"-->
+						<!--                       data-notify="0">-->
+						<!--                        <i class="zmdi zmdi-favorite-outline"></i>-->
+						<!--                    </a>-->
 					</div>
 				</nav>
 			</div>
@@ -316,9 +310,9 @@
 				<div class="header-cart-buttons flex-w w-full">
 					<a th:href="@{/}"
 						class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-						Continue shopping </a> <a th:href="@{/shoping-cart}"
+						Tiếp tục mua sắm </a> <a th:href="@{/shoping-cart}"
 						class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-						View Cart </a>
+						Xem giỏ hàng </a>
 				</div>
 			</div>
 		</div>
@@ -333,25 +327,27 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">Thể loại</h4>
+					<h4 class="stext-301 cl0 p-b-30">Hương vị trà sữa</h4>
 
 					<ul>
 						<li class="p-b-10"><a href="#"
-							class="stext-107 cl7 hov-cl1 trans-04"> Nữ </a></li>
+							class="stext-107 cl7 hov-cl1 trans-04"> Trà sữa trân châu
+								đường đen </a></li>
 
 						<li class="p-b-10"><a href="#"
-							class="stext-107 cl7 hov-cl1 trans-04"> Nam </a></li>
+							class="stext-107 cl7 hov-cl1 trans-04"> Matcha Latte </a></li>
 
 						<li class="p-b-10"><a href="#"
-							class="stext-107 cl7 hov-cl1 trans-04"> Unisex </a></li>
+							class="stext-107 cl7 hov-cl1 trans-04"> Trà sữa truyền thống
+						</a></li>
 
 						<li class="p-b-10"><a href="#"
-							class="stext-107 cl7 hov-cl1 trans-04"> Thể thao </a></li>
+							class="stext-107 cl7 hov-cl1 trans-04"> Trà sữa thái xanh </a></li>
 					</ul>
 				</div>
 
 				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">Giúp đỡ</h4>
+					<h4 class="stext-301 cl0 p-b-30">Hỗ trợ</h4>
 
 					<ul>
 						<li class="p-b-10"><a href="#"
@@ -372,8 +368,8 @@
 					<h4 class="stext-301 cl0 p-b-30">LIÊN LẠC</h4>
 
 					<p class="stext-107 cl7 size-201">Bạn có câu hỏi nào? Hãy đến
-						cửa hàng tại Tòa nhà Trung Tâm, Số 1 Võ Văn Ngân. Hoặc gọi
-						0899074947</p>
+						cửa hàng tại 1 Võ Văn Ngân, Phường Thủ Đức, Thành phố Hồ Chí Minh
+						hoặc gọi vào số 0868 615 703</p>
 
 					<div class="p-t-27">
 						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
@@ -392,12 +388,13 @@
 					<form>
 						<div class="wrap-input1 w-full p-b-4">
 							<input class="input1 bg-none plh1 stext-107 cl7" type="text"
-								name="email" placeholder="duyc080807@gmail.com">
+								name="email" placeholder="youremail@gmail.com">
 							<div class="focus-input1 trans-04"></div>
 						</div>
 
 						<div class="p-t-18">
-							<button
+							<button type="button"
+								th:onclick="|window.location.href='@{/register}'|"
 								class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
 								Đăng ký</button>
 						</div>
@@ -408,7 +405,6 @@
 			<div class="p-t-40">
 
 				<p class="stext-107 cl6 txt-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;
 					<script>document.write(new Date().getFullYear());</script>
 					All rights reserved
@@ -548,131 +544,5 @@
 	<script th:src="@{/js/validator.js}"></script>
 	<!--===============================================================================================-->
 	<script th:src="@{/js/main.js}"></script>
-	<script>
-document.addEventListener("DOMContentLoaded", function() {
-    fetch("/api/wishlist/count/1") // ⚠️ tạm dùng accountId=1, sau này thay bằng user thực
-        .then(res => res.text())
-        .then(count => {
-            document.getElementById("wishlist-icon").setAttribute("data-notify", count);
-        })
-        .catch(err => console.error("Wishlist count error:", err));
-});
-</script>
-
-
-	<!-- 💬 Chat Widget -->
-	<div id="chat-widget"
-		style="position: fixed; bottom: 25px; right: 25px; z-index: 999;">
-		<!-- Hộp chat -->
-		<div id="chat-box"
-			style="display: none; width: 320px; height: 450px; background: white; border-radius: 12px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.2); overflow: hidden;">
-			<div
-				style="background-color: #007bff; color: white; padding: 10px; font-weight: 600;">
-				💬 Trò chuyện trực tuyến <span id="close-chat"
-					style="float: right; cursor: pointer;">✖</span>
-			</div>
-			<div id="chat-content"
-				style="height: 340px; overflow-y: auto; padding: 10px; background: #f8f9fa;"></div>
-			<div style="display: flex; border-top: 1px solid #ccc;">
-				<input id="message-input" type="text" placeholder="Nhập tin nhắn..."
-					style="flex: 1; border: none; padding: 10px;">
-				<button id="send-btn"
-					style="background: #007bff; color: white; border: none; padding: 0 15px;">➤</button>
-			</div>
-		</div>
-
-		<!-- Nút tròn mở chat -->
-		<button id="open-chat"
-			style="background: #007bff; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 24px; cursor: pointer;">
-			💬</button>
-	</div>
-
-	<!-- ✅ Bắt buộc: load thư viện WebSocket -->
-	<script src="/js/sockjs.min.js"></script>
-	<script src="/js/stomp.min.js"></script>
-	<script>
-	let stompClient = null;
-	let username = null;
-
-	document.addEventListener("DOMContentLoaded", function () {
-	  const openBtn = document.getElementById("open-chat");
-	  const closeBtn = document.getElementById("close-chat");
-	  const chatBox = document.getElementById("chat-box");
-	  const sendBtn = document.getElementById("send-btn");
-
-	  openBtn.addEventListener("click", () => {
-	    chatBox.style.display = "block";
-	    openBtn.style.display = "none";
-	    initChat();
-	  });
-
-	  closeBtn.addEventListener("click", () => {
-	    chatBox.style.display = "none";
-	    openBtn.style.display = "block";
-	  });
-
-	  sendBtn.addEventListener("click", sendMessage);
-	});
-
-	function initChat() {
-	  fetch("/api/current-user")
-	    .then(res => res.json())
-	    .then(data => {
-	      username = data.username || "Guest";
-	      connectChat();
-	    })
-	    .catch(() => {
-	      username = "Guest";
-	      connectChat();
-	    });
-	}
-
-	function connectChat() {
-	  const socket = new SockJS("/ws");
-	  stompClient = Stomp.over(socket);
-	  stompClient.connect({}, (frame) => {
-	    console.log("✅ Connected:", frame);
-	    stompClient.subscribe("/user/queue/messages", (msg) => {
-	      showMessage(JSON.parse(msg.body));
-	    });
-	    stompClient.send("/app/chat.send", {}, JSON.stringify({
-	      from: username,
-	      to: "admin@gmail.com",
-	      content: `${username} đã bắt đầu trò chuyện.`
-	    }));
-	  });
-	}
-
-	function sendMessage() {
-	  const input = document.getElementById("message-input");
-	  const text = input.value.trim();
-	  if (text === "") return;
-
-	  showMessage({ from: "me", content: text });
-	  stompClient.send("/app/chat.send", {}, JSON.stringify({
-	    from: username,
-	    to: "admin@gmail.com",
-	    content: text
-	  }));
-	  input.value = "";
-	}
-
-	function showMessage(msg) {
-	  const chatContent = document.getElementById("chat-content");
-	  const div = document.createElement("div");
-	  div.style.margin = "5px 0";
-
-	  if (msg.from === "me") {
-	    div.style.textAlign = "right";
-	    div.innerHTML = `<div style="display:inline-block;background:#007bff;color:white;padding:8px;border-radius:10px;">${msg.content}</div>`;
-	  } else {
-	    div.style.textAlign = "left";
-	    div.innerHTML = `<div style="display:inline-block;background:#e9ecef;padding:8px;border-radius:10px;">${msg.from}: ${msg.content}</div>`;
-	  }
-
-	  chatContent.appendChild(div);
-	  chatContent.scrollTop = chatContent.scrollHeight;
-	}
-	</script>
 </body>
 </html>
