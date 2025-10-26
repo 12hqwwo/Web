@@ -42,14 +42,48 @@ public class AuthController {
 
     @GetMapping("/user-login")
     public String viewLogin(Model model) {
-
         return "user/login";
     }
 
     @GetMapping("/forgot-pass")
     public String forgotPass(Model model){
-
         return "user/forgot-pass";
+    }
+    
+    // ✅ THÊM MỚI: Xử lý POST từ trang forgot-pass (gửi email)
+    @PostMapping("/reset-page")
+    public String sendResetPasswordEmail(@RequestParam String email, 
+                                         RedirectAttributes redirectAttributes) {
+        try {
+            // Kiểm tra email có tồn tại không
+            Account account = accountService.findByEmail(email);
+            
+            if (account == null) {
+                redirectAttributes.addFlashAttribute("errorMessage", 
+                    "Email không tồn tại trong hệ thống!");
+                return "redirect:/forgot-pass";
+            }
+            
+            // Gửi mã OTP đến email
+            verificationCodeService.createVerificationCode(email);
+            
+            redirectAttributes.addFlashAttribute("success", 
+                "Mã xác thực đã được gửi đến email " + email);
+            redirectAttributes.addFlashAttribute("email", email);
+            
+            return "redirect:/reset-pass";
+            
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", 
+                "Có lỗi xảy ra: " + e.getMessage());
+            return "redirect:/forgot-pass";
+        }
+    }
+
+    // ✅ THÊM MỚI: Hiển thị trang nhập mã OTP và mật khẩu mới
+    @GetMapping("/reset-pass")
+    public String showResetPasswordPage(Model model) {
+        return "user/reset-pass";
     }
 
     @GetMapping("/register")
@@ -115,7 +149,7 @@ public class AuthController {
 
         // ✅ Gửi OTP xác thực email
         verificationCodeService.createVerificationCode(account.getEmail());
-        redirectAttributes.addFlashAttribute("email", account.getEmail()); // 👈 thêm dòng này
+        redirectAttributes.addFlashAttribute("email", account.getEmail());
 
         redirectAttributes.addFlashAttribute("success", "Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.");
         return "redirect:/verify-otp";
@@ -140,6 +174,7 @@ public class AuthController {
             return "redirect:/reset-pass";
         }
     }
+    
     @GetMapping("/verify-otp")
     public String verifyOtpPage() {
         return "user/verify-otp"; // Trang HTML để người dùng nhập mã OTP
@@ -157,6 +192,7 @@ public class AuthController {
             return "redirect:/verify-otp";
         }
     }
+    
     @PostMapping("/resend-otp")
     public String resendOtp(@RequestParam String email, RedirectAttributes redirectAttributes) {
         try {
